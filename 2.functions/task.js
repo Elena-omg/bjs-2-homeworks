@@ -1,4 +1,3 @@
-// 1. Ипотечный калькулятор
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
     function toNumber(value) {
         if (typeof value === 'number') return value;
@@ -23,7 +22,6 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
     return Math.round(total * 100) / 100;
 }
 
-// 2. Функции для работы с массивами (по схеме препода)
 function getArrayParams(...arr) {
     if (arr.length === 0) return { min: 0, max: 0, avg: 0 };
     let min = arr[0];
