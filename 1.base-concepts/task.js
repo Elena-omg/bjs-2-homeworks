@@ -17,3 +17,26 @@ function solveEquation(a, b, c) {
   }
   return roots;
 }
+function calculateTotalMortgage(percent, contribution, amount, countMonths) {
+    function toNumber(value) {
+        if (typeof value === 'number') return value;
+        if (typeof value === 'string') {
+            const num = parseFloat(value);
+            return isNaN(num) ? NaN : num;
+        }
+        return NaN;
+    }
+    const p = toNumber(percent);
+    const c = toNumber(contribution);
+    const a = toNumber(amount);
+    const n = toNumber(countMonths);
+    if (isNaN(p) || isNaN(c) || isNaN(a) || isNaN(n)) return false;
+    const S = a - c;
+    if (S <= 0) return 0;
+    const P = p / 100 / 12;
+    let monthlyPayment;
+    if (P === 0) monthlyPayment = S / n;
+    else monthlyPayment = S * (P + (P / (Math.pow(1 + P, n) - 1)));
+    const total = monthlyPayment * n;
+    return Math.round(total * 100) / 100;
+}
